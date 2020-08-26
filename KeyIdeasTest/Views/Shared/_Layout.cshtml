@@ -1,0 +1,234 @@
+﻿@model KeyIdeasTest.Models.Account.RegisterLoginViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KeyIdeasTest</title>
+
+    <environment names="Development">
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css" asp-suppress-fallback-integrity="true"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha512-rO2SXEKBSICa/AfyhEK5ZqWFCOok1rcgPYfGOqtX35OyiraBg6Xa4NnBJwXgpIRoXeWjcAmcQniMhp22htDc6g==" />
+    </environment>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-success py-0 navigation_menu">
+            <span id="logo-main">
+                <a id="top-logo" class="navbar-brand" href="/">
+                    <img src="/assests/images/logo.png" alt="">
+                </a>
+            </span>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="home" asp-action="index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="home" asp-action="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="home" asp-action="contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="home" asp-action="privacy">Privacy</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="user" asp-action="dashboard">Dashboard</a>
+                        </li>
+                    }
+                </ul>
+                <div class="my-2 my-lg-0">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-action="account" asp-controller="logout">Sign Out</a>
+                    }
+                    else
+                    {
+                        <a data-toggle="modal" data-target="#myModal" href="">Sign In</a>
+                    }
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - ALL RIGHTS RESERVED. WEB DESIGN AND DEVELOPMENT BY KEYIDEAS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="myModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header mdrwg_mod_sec">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body noPad">
+                    <div id="page-wrapper">
+                        <div id="content-container">
+                            <div id="overlay_loader" style="display:none">
+                                <div class="mdrwg_loader_calss">
+                                    <img src="/assests/images/tenor.gif">
+                                </div>
+                            </div>
+                            <!-- START CONTENT -->
+                            <section id="woffice-login" class="revslider-disabled">
+                                <div id="woffice-login-left">
+                                </div>
+                                <div id="woffice-login-right" class="popuop-loginform">
+                                    <header>
+                                        <a href="/" id="login-logo"><img src="/assests/images/logo.png"></a>
+                                        <div class="infobox fa-exclamation-triangle" id="new_text_error" style="background-color: #ffa500; display:none">
+                                        </div>
+                                        <div class="infobox fa-exclamation-triangle" id="new_text_error_login" style="background-color: #ffa500; display:none">
+                                        </div>
+                                        <div class="infobox fa-exclamation-triangle" id="new_text_sucess_login" style="background-color: #026602; display:none">
+                                        </div>
+                                        <div class="infobox fa-exclamation-triangle" id="new_text_reg_login" style="background-color: #026602; display:none">
+                                        </div>
+                                    </header>
+                                    <div class="login-tabs-wrapper">
+                                        <form name="loginform" id="loginform" asp-action="login" asp-controller="account" method="post" style="display: block;">
+                                            <input type="hidden" asp-for="LoginViewModel.ReturnUrl" name="returnUrl" value="@TempData["returnUrl"]" />
+                                            <p id="loginformSuccess" class="text-success"></p>
+                                            <p class="login-username">
+                                                <label for="user">Username or Email Address</label>
+                                                <input type="text" asp-for="LoginViewModel.UserName" name="userName" id="user" class="input" value="" />
+                                                <i class="fa fa-user fa-lg"></i>
+                                                <span asp-validation-for="LoginViewModel.UserName" class="text-danger"></span>
+                                            </p>
+                                            <p class="login-password">
+                                                <label for="pass">Password</label>
+                                                <input type="password" asp-for="LoginViewModel.Password" name="password" id="pass" class="input" value="" size="20" />
+                                                <i class="fa fa-key fa-lg"></i>
+                                                <span asp-validation-for="LoginViewModel.Password" class="text-danger"></span>
+                                            </p>
+                                            <p class="login-remember"><label><input asp-for="LoginViewModel.RememberMe" name="rememberMe" type="checkbox" id="rememberme" value="forever"> Remember Me</label></p>
+                                            <p id="loginformErrors" class="text-danger"></p>
+                                            <p class="login-submit text-center pb-4">
+                                                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-primary w-50" value="Log In">
+                                            </p>
+                                        </form>
+                                        <div id="register-wrapper" style="display: block;">
+                                            <p>If you don't have any account yet, you can register now.</p>
+                                            <div class="mb-3">
+                                                <a href="#register-form" class="btn btn-info" id="register-trigger">
+                                                    <i class="fa fa-sign-in-alt"></i> Sign Up
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <form method="post" id="register-form" asp-action="register" asp-controller="account" style="display: none;">
+                                            <input type="hidden" asp-for="RegisterViewModel.ReturnUrl" name="returnUrl" value="@TempData["returnUrl"]" />
+                                            <div class="login-form">
+                                                <div class="form-group">
+                                                    <input asp-for="RegisterViewModel.UserName" name="userName" type="text" class="login-field" value="" placeholder="Username" id="reg-name" required="">
+                                                    <label class="login-field-icon fui-user" for="reg-name"></label>
+                                                    <span asp-validation-for="RegisterViewModel.UserName" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input asp-for="RegisterViewModel.Email" name="email" type="email" class="login-field" value="" placeholder="Email" id="reg-email" required="">
+                                                    <label class="login-field-icon fui-mail" for="reg-email"></label>
+                                                    <span asp-validation-for="RegisterViewModel.Email" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input asp-for="RegisterViewModel.Password" name="password" type="password" class="login-field password-entry" value="" placeholder="Password" id="reg-pass" required="">
+                                                    <label class="login-field-icon fui-lock" for="reg-pass"></label>
+                                                    <div id="pass-strength-result"></div>
+                                                    <span asp-validation-for="RegisterViewModel.Password" class="text-danger"></span>
+                                                    <p class="description">Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! ? $ % ^ &amp; ).</p>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input asp-for="RegisterViewModel.ConfirmPassword" name="confirmPassword" type="password" class="login-field password-entry-confirm" value="" placeholder="Password confirmation" id="reg-pass-confirmation" required="">
+                                                    <label class="login-field-icon fui-lock" for="reg-pass-confirmation"></label>
+                                                    <span asp-validation-for="RegisterViewModel.ConfirmPassword" class="text-danger"></span>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <input asp-for="RegisterViewModel.FirstName" name="firstName" type="text" class="login-field" value="" placeholder="First Name" id="reg-fname">
+                                                    <label class="login-field-icon fui-user" for="reg-fname"></label>
+                                                    <span asp-validation-for="RegisterViewModel.FirstName" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input asp-for="RegisterViewModel.LastName" name="lastName" type="text" class="login-field" value="" placeholder="Last Name" id="reg-lname">
+                                                    <label class="login-field-icon fui-user" for="reg-lname"></label>
+                                                    <span asp-validation-for="RegisterViewModel.LastName" class="text-danger"></span>
+                                                </div>
+                                                <p id="register-formErrors" class="text-danger"></p>
+                                                <input id="reg_submit" class="btn btn-primary mb-4 w-100" type="submit" name="reg_submit" value="Join">
+                                                <div id="goback-trigger" class="text-center mb-4" style="display: none;">
+                                                    <a id="login-trigger" href="#loginform" class="btn btn-info"><i class="fa fa-arrow-left"></i> Go back</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- END CONTENT -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <environment names="Development">
+        <script src="~/lib/font-awesome/js/all.js"></script>
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"
+                asp-fallback-src="~/lib/font-awesome/js/all.min.js"
+                asp-fallback-test="window.FontAwesome" crossorigin="anonymous"
+                integrity="sha512-M+hXwltZ3+0nFQJiVke7pqXY7VdtWW2jVG31zrml+eteTP7im25FdwtLhIBTWkaHRQyPrhO2uy8glLMHZzhFog=="></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/jquery.min.js"
+                asp-suppress-fallback-integrity="true"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.min.js"
+                asp-suppress-fallback-integrity="true"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha512-Oy5BruJdE3gP9+LMJ11kC5nErkh3p4Y0GawT1Jrcez4RTDxODf3M/KP3pEsgeOYxWejqy2SPnj+QMpgtvhDciQ=="></script>
+    </environment>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

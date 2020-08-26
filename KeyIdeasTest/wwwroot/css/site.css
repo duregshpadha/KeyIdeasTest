@@ -1,0 +1,282 @@
+﻿
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #fff;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+input[type=submit] {
+    position: relative;
+    overflow: hidden;
+}
+
+#wp-submit {
+    background-color: #25a0da !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #292b36;
+    border-color: #82b440;
+}
+
+.navigation_menu {
+    background: #373a49;
+    background-color: #82b440 !important;
+}
+
+    .navigation_menu #navbarSupportedContent {
+        background-color: #82b440 !important;
+    }
+
+    .navigation_menu .active {
+        background: linear-gradient(-30deg, #1b96d0, #2faae4) !important;
+    }
+
+    .navigation_menu .nav-item {
+        margin-left: 2px;
+    }
+
+        .navigation_menu .nav-item :hover {
+            background: linear-gradient(-30deg, #1b96d0, #2faae4) !important;
+        }
+
+#logo-main {
+    float: left;
+    width: 190px;
+    padding-top: 5px;
+}
+
+    #logo-main img {
+        max-width: 100%;
+    }
+
+#top-logo {
+    max-width: 200px;
+    margin-top: -2px;
+}
+
+.navbar-collapse {
+    width: 100%;
+}
+
+
+#content-container .box {
+    background: #fff;
+    padding: 0;
+    position: relative;
+    max-width: 100%;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0.4rem 2rem rgba(0,0,0,.08);
+    -moz-box-shadow: 0 .4rem 2rem rgba(0,0,0,.08);
+    box-shadow: 0 0.4rem 2rem rgba(0,0,0,.08);
+}
+
+a.password-lost {
+    position: relative;
+    font-style: italic;
+    top: -2rem;
+    text-align: right;
+    display: block;
+}
+
+#content-container {
+    width: 100%;
+    position: relative;
+    z-index: 18;
+}
+
+    #content-container #content {
+        position: relative;
+        top: -50px;
+        width: 90%;
+        margin: auto;
+        padding-bottom: 1px;
+    }
+
+    #content-container .intern-padding {
+        padding: 30px 40px;
+        margin: 80px 0 40px 0;
+    }
+
+    #content-container a.password-lost {
+        color: #b7b9c4;
+    }
+
+.btnOrange {
+    background-color: orange;
+    border-radius: 2px;
+    border: 2px solid orange;
+    color: #fff !important;
+    padding: 2px 4px !important;
+}
+
+.modal-header.mdrwg_mod_sec {
+    padding: 0 4px 0 0;
+}
+
+.modal-body.noPad {
+    padding: 0;
+}
+
+#page-wrapper {
+    height: auto;
+    overflow: initial;
+}
+
+div#overlay_loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 105px;
+}
+
+#woffice-login {
+    background-color: #444444;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+    #woffice-login .login-submit input[type=submit] {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #woffice-login form label {
+        margin-bottom: 0;
+        font-weight: 500;
+        width: 100%;
+    }
+
+    #woffice-login form label, .text-light {
+        color: #9b9ca3 !important;
+    }
+
+    #woffice-login form p.login-password, #woffice-login form p.login-username {
+        position: relative;
+    }
+
+        #woffice-login form p.login-password svg, #woffice-login form p.login-username svg {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: gray;
+        }
+
+        #woffice-login form p.login-password input, #woffice-login form p.login-username input {
+            padding-left: 40px !important;
+        }
+
+
+#woffice-login-left {
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-image: url(../assests/images/MDRWG-bg3.png);
+}
+
+#woffice-login-right {
+    position: relative;
+    width: 50%;
+    padding: 50px 10% 0 10%;
+    background: #fff;
+    max-height: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: -2rem 0 2rem rgba(0,0,0,.08);
+}
+
+    #woffice-login-right.popuop-loginform {
+        width: 100%;
+        padding-top: 5px;
+    }
+
+        #woffice-login-right.popuop-loginform a#login-logo {
+            margin: 0;
+        }
+
+        #woffice-login-right.popuop-loginform .infobox {
+            margin-top: 15px !important;
+            padding: 10px;
+        }
+
+        #woffice-login-right.popuop-loginform form {
+            margin-top: 0;
+        }
+
+            #woffice-login-right.popuop-loginform form input {
+                margin-top: 5px;
+            }
+
+
+#login-logo img {
+    width: 315px;
+}
+
+#content-container .infobox {
+    margin: 30px 0 20px 0;
+    border-radius: 5px;
+    padding: 20px;
+    color: #fff;
+    display: block;
+    margin: 30px 0 10px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#register-wrapper {
+    text-align: center;
+    margin-top: -20px;
+}
+
+form p {
+    text-transform: uppercase;
+    margin: 15px 0;
+    display: block;
+    width: 100%;
+}
+
+input[type=email], input[type=password], input[type=text], input[type=url], textarea {
+    width: 100%;
+}
+
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea {
+    border: 2px solid #e0e0ec !important;
+    border-radius: .2rem;
+    margin-top: 15px;
+    padding: .75rem !important;
+    box-shadow: inset 0 .25rem .125rem 0 rgba(0,0,0,.05) !important;
+}
